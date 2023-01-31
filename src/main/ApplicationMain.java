@@ -7,6 +7,10 @@ import main.tz.TimeZoneHelperUtil;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
+
+        Sort s = new Sort();
+        s.bestTeamScore(new int[]{4,5,6,5}, new int[]{2,1,2,1});
+
         CoinChange coinChange = new CoinChange();
         long res = coinChange.combinationSum(new int[]{2, 3, 6, 7}, 7);
         System.out.println(res);
