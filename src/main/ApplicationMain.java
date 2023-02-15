@@ -7,6 +7,9 @@ import main.tz.TimeZoneHelperUtil;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
+        ValidParentheses v = new ValidParentheses();
+        v.longestValidParentheses("()(()");
+
 
         Sort s = new Sort();
         s.bestTeamScore(new int[]{4,5,6,5}, new int[]{2,1,2,1});
