@@ -43,39 +43,28 @@ public class ValidParentheses {
 
     // 32. Longest Valid Parenthesis
     public int longestValidParentheses(String s) {
-        int n = s.length();
-        if (n == 0) {
-            return 0;
-        }
-        int maxSum = Integer.MIN_VALUE;
-        int maxSoFar = 0;
+        int len = s.length();
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(-1);
 
-        int len = 0;
-        int indx = 0;
+        int maxLen = 0;
 
-        for (int i = 0; i < n; ++i) {
-            maxSoFar += s.charAt(i) == '(' ? -1 : 1;
+        for (int i = 0; i < len; ++i) {
+            if (s.charAt(i) == '(') {
+                stack.push(-1);
+            } else {
+                stack.pop();
+                if (stack.empty()) {
+                    stack.push(i);
+                    continue;
+                }
+                int currLen = i - stack.peek();
 
-            if (maxSoFar > 0) {
-                maxSoFar = 0;
-                indx = i;
-                continue;
+                if (maxLen < currLen) {
+                    maxLen = currLen;
+                }
             }
-
-            if (maxSoFar > maxSum) {
-                maxSum = maxSoFar;
-            }
-
-            //if (maxSum == 0) {
-            len = Math.max(len, i - indx);
-            indx = i;
-            //}
         }
-
-        if(maxSum<0)
-        {
-            len += maxSoFar;
-        }
-        return len+1;
+        return maxLen;
     }
 }
