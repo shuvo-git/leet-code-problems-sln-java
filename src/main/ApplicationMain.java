@@ -1,5 +1,6 @@
 package main;
 
+import main.solution.PrimeNumber;
 import main.solution.SqrtX;
 
 /********************************************************
@@ -7,19 +8,16 @@ import main.solution.SqrtX;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        SqrtX s= new SqrtX();
-        int res = s.mySqrt(25);
+        PrimeNumber p = new PrimeNumber();
+        int res = p.countPrimes(74549);
         System.out.println(res);
-//
-//
-//        Sort s = new Sort();
-//        s.bestTeamScore(new int[]{4,5,6,5}, new int[]{2,1,2,1});
-//
-//        CoinChange coinChange = new CoinChange();
-//        long res = coinChange.combinationSum(new int[]{2, 3, 6, 7}, 7);
-//        System.out.println(res);
-//
-//
+
+        res = p.countPrimes(15);
+        System.out.println(res);
+    }
+}
+
+
 //        String startDate = TimeZoneHelperUtil.convertToSeoulTime(
 //                "2022-11-15 00:00:00",
 //                "Asia/Dhaka"
@@ -47,6 +45,3 @@ public class ApplicationMain {
 //        );
 //
 //        System.out.println(startDateOrig + " - " + endDateOrig);
-
-    }
-}
