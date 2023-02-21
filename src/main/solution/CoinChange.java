@@ -1,4 +1,4 @@
-package main;
+package main.solution;
 
 import java.util.List;
 

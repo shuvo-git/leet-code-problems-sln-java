@@ -1,4 +1,4 @@
-package main;
+package main.solution;
 
 /***************************
  * {@link Name: } Jobayed Ullah

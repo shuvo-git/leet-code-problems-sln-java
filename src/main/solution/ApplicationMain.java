@@ -1,17 +1,13 @@
-package main;
-
-import main.tz.TimeZoneHelperUtil;
+package main.solution;
 
 /********************************************************
  * {@link Name: } Jobayed Ullah
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        ValidParentheses v = new ValidParentheses();
-        //v.longestValidParentheses("()(()");
-
-        //int val = v.longestValidParentheses("(((()(");
-        int val = v.longestValidParentheses(")()())");
+        SqrtX s= new SqrtX();
+        int res = s.mySqrt(14128229);
+        System.out.println(res);
 //
 //
 //        Sort s = new Sort();
