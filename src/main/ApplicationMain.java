@@ -1,4 +1,6 @@
-package main.solution;
+package main;
+
+import main.solution.SqrtX;
 
 /********************************************************
  * {@link Name: } Jobayed Ullah
@@ -6,7 +8,7 @@ package main.solution;
 public class ApplicationMain {
     public static void main(String[] args) {
         SqrtX s= new SqrtX();
-        int res = s.mySqrt(14128229);
+        int res = s.mySqrt(25);
         System.out.println(res);
 //
 //
