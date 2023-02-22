@@ -60,4 +60,14 @@ public class StringProcessing {
         return digit.intValue();
     }
 
+    // 290. Word Pattern
+    public boolean wordPattern(String pattern, String s) {
+        int len = s.length();
+
+        for (int i = 0; i < len; ++i) {
+
+        }
+        return true;
+    }
+
 }

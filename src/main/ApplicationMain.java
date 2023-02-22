@@ -7,8 +7,8 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        DuplicateNumber d = new DuplicateNumber();
-        d.searchRange(new int[]{5,7,7,8,8,10},7);
+        StringProcessing s = new StringProcessing();
+        s.wordPattern("abba","dog    cat    cat    dog");
     }
 }
 
