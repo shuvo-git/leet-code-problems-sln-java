@@ -3,14 +3,16 @@ package main;
 import main.solution.PrimeNumber;
 import main.solution.Sort;
 import main.solution.SqrtX;
+import main.solution.StringProcessing;
 
 /********************************************************
  * {@link Name: } Jobayed Ullah
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        Sort s = new Sort();
-        s.findMedianSortedArrays(new int[]{1,4,7,8,10},new int[]{-1,6,9,13});
+        StringProcessing s = new StringProcessing();
+        int a = s.myAtoi(".1");
+        System.out.println(a);
     }
 }
 

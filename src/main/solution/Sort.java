@@ -66,7 +66,7 @@ public class Sort {
         }
 
 
-        int num1=0, num2=0;
+        int num1 = 0, num2 = 0;
 
         int i = 0, j = 0;
         for (; i < len1 && j < len2; ) {
