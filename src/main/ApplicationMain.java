@@ -9,10 +9,7 @@ import main.solution.SqrtX;
 public class ApplicationMain {
     public static void main(String[] args) {
         PrimeNumber p = new PrimeNumber();
-        int res = p.countPrimes(74549);
-        System.out.println(res);
-
-        res = p.countPrimes(15);
+        boolean res = p.isUgly(2147483647);
         System.out.println(res);
     }
 }
