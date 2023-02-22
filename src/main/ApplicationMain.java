@@ -1,18 +1,14 @@
 package main;
 
-import main.solution.PrimeNumber;
-import main.solution.Sort;
-import main.solution.SqrtX;
-import main.solution.StringProcessing;
+import main.solution.*;
 
 /********************************************************
  * {@link Name: } Jobayed Ullah
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        StringProcessing s = new StringProcessing();
-        int a = s.myAtoi(".1");
-        System.out.println(a);
+        DuplicateNumber d = new DuplicateNumber();
+        d.searchRange(new int[]{5,7,7,8,8,10},7);
     }
 }
 
