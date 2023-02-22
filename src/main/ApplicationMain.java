@@ -1,6 +1,7 @@
 package main;
 
 import main.solution.PrimeNumber;
+import main.solution.Sort;
 import main.solution.SqrtX;
 
 /********************************************************
@@ -8,9 +9,8 @@ import main.solution.SqrtX;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        PrimeNumber p = new PrimeNumber();
-        boolean res = p.isUgly(2147483647);
-        System.out.println(res);
+        Sort s = new Sort();
+        s.findMedianSortedArrays(new int[]{1,4,7,8,10},new int[]{-1,6,9,13});
     }
 }
 
