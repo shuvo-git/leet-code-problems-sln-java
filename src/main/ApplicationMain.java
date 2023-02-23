@@ -7,8 +7,8 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        StringProcessing s = new StringProcessing();
-        s.wordPattern("eo","eog bnp");
+        Numbers s = new Numbers();
+        s.romanToInt("MCMXCIV");
     }
 }
 
