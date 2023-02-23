@@ -1,7 +1,11 @@
 package main.solution;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /***************************
  * {@link Name: } Jobayed Ullah
@@ -62,12 +66,40 @@ public class StringProcessing {
 
     // 290. Word Pattern
     public boolean wordPattern(String pattern, String s) {
-        int len = s.length();
-
-        for (int i = 0; i < len; ++i) {
-
+        int len = pattern.length();
+        String str1 = "";
+        int i = 1;
+        HashMap<Character, Integer> mapPattern = new HashMap<>();
+        for (int k = 0; k < len; ++k) {
+            Character c = pattern.charAt(k);
+            Integer x = mapPattern.get(c);
+            if (x == null) {
+                mapPattern.put(c, i++);
+                x = mapPattern.get(c);
+            }
+            str1 += x;
         }
-        return true;
+
+        String[] words = s.split("\\W");
+
+        List<String> wordList = Arrays.stream(words)
+                .filter(item -> !item.isEmpty())
+                .collect(Collectors.toList());
+
+        String str2 = "";
+        i = 1;
+        HashMap<String, Integer> mapWords = new HashMap<>();
+        for (int j = 0; j < wordList.size(); ++j) {
+            String word = wordList.get(j);
+            Integer x = mapWords.get(word);
+            if (x == null) {
+                mapWords.put(word, i++);
+                x = mapWords.get(word);
+            }
+            str2 += x;
+        }
+
+        return str1.equals(str2);
     }
 
 }

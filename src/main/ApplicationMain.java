@@ -8,7 +8,7 @@ import main.solution.*;
 public class ApplicationMain {
     public static void main(String[] args) {
         StringProcessing s = new StringProcessing();
-        s.wordPattern("abba","dog    cat    cat    dog");
+        s.wordPattern("eo","eog bnp");
     }
 }
 
