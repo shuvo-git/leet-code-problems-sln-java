@@ -7,8 +7,8 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        BinarySearch s = new BinarySearch();
-        s.shipWithinDays(new int[]{1,2,3,4,5,6,7,8,9,10}, 5);
+//        BinarySearch s = new BinarySearch();
+//        s.shipWithinDays(new int[]{1,2,3,4,5,6,7,8,9,10}, 5);
     }
 }
 
