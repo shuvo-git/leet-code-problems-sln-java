@@ -93,4 +93,22 @@ public class Numbers {
 
         return fib[n];
     }
+
+    // NOT Solved 746. Min Cost Climbing Stairs
+    public int minCostClimbingStairs(int[] cost) {
+        int len = cost.length;
+        int totCost = 0;
+        for (int jump1 = 0; jump1 < len; ) {
+            int jump2 = jump1 + 1;
+
+            if (jump2 < len && cost[jump2] < cost[jump1]) {
+                totCost += cost[jump2];
+                jump1 += 2;
+            } else {
+                totCost += cost[jump1];
+                ++jump1;
+            }
+        }
+        return totCost;
+    }
 }

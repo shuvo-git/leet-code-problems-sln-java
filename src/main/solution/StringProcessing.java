@@ -102,4 +102,21 @@ public class StringProcessing {
         return str1.equals(str2);
     }
 
+    // 28. Find the Index of the First Occurrence in a String
+    public int strStr(String haystack, String needle) {
+        int sLen = needle.length();
+        int len = haystack.length();
+
+        for (int i = 0; i < len; ++i) {
+            if(i+sLen>len){
+                return -1;
+            }
+            String s = haystack.substring(i,i+sLen);
+            if(s.equals(needle)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }
