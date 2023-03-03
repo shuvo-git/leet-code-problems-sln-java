@@ -63,4 +63,19 @@ public class Numbers {
         }
         return result;
     }
+
+    // 268. Missing Number
+    public int missingNumber(int[] nums) {
+        int[] sorted = new int[nums.length + 1];
+        for(int i=0;i<nums.length;++i){
+            sorted[nums[i]] = 1;
+        }
+
+        int j = 0;
+        for(; j<sorted.length;++j){
+            if(sorted[j]!=1)
+                return j;
+        }
+        return j;
+    }
 }
