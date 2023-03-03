@@ -9,6 +9,9 @@ public class ApplicationMain {
     public static void main(String[] args) {
 //        BinarySearch s = new BinarySearch();
 //        s.shipWithinDays(new int[]{1,2,3,4,5,6,7,8,9,10}, 5);
+
+        StringProcessing sp = new StringProcessing();
+        sp.compress(new char[]{'a','c','c','b','b','b','b','b','b','b','b','b','b','b','b'});
     }
 }
 
