@@ -8,6 +8,7 @@ import java.util.Map;
  */
 
 public class Numbers {
+    int[] fib = new int[46];
 
     // 13. Roman to Integer
     public int romanToInt(String s) {
@@ -67,15 +68,29 @@ public class Numbers {
     // 268. Missing Number
     public int missingNumber(int[] nums) {
         int[] sorted = new int[nums.length + 1];
-        for(int i=0;i<nums.length;++i){
+        for (int i = 0; i < nums.length; ++i) {
             sorted[nums[i]] = 1;
         }
 
         int j = 0;
-        for(; j<sorted.length;++j){
-            if(sorted[j]!=1)
+        for (; j < sorted.length; ++j) {
+            if (sorted[j] != 1)
                 return j;
         }
         return j;
+    }
+
+
+    // 70. Climbing Stairs
+    public int climbStairs(int n) {
+        if (n == 0 || n == 1 || n == 2 || n == 3)
+            return n;
+
+        if (fib[n] != 0)
+            return fib[n];
+
+        fib[n] = climbStairs(n - 1) + climbStairs(n - 2);
+
+        return fib[n];
     }
 }
