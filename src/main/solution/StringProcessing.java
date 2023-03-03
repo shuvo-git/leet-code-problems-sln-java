@@ -159,37 +159,3 @@ public class StringProcessing {
     }
 
 }
-
-
-//        int len = chars.length;
-//
-//        int cnt = 1, k = 0;
-//        for (int i = 0, j = 0; i < len && j < len; ++j) {
-//            if (chars[i] == chars[j]) {
-//                if (i == j) {
-//                    //cnt = 1;
-//                    //chars[k++] = chars[i];
-//                    continue;
-//                } else {
-//                    ++cnt;
-//                }
-//
-//            } else {
-//                if (cnt > 1) {
-//                    String cntStr = "" + cnt;
-//                    for (int indx = 0; indx < cntStr.length(); ++indx) {
-//                        chars[k++] = cntStr.charAt(indx);
-//                    }
-//                    i = j;
-//                    cnt = 1;
-//                    chars[k++] = chars[i];
-//                }
-//            }
-//        }
-//        if (cnt > 1) {
-//            String cntStr = "" + cnt;
-//            for (int indx = 0; indx < cntStr.length(); ++indx) {
-//                chars[k++] = cntStr.charAt(indx);
-//            }
-//        }
-//        return k;
