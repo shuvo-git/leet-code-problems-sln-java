@@ -108,11 +108,11 @@ public class StringProcessing {
         int len = haystack.length();
 
         for (int i = 0; i < len; ++i) {
-            if(i+sLen>len){
+            if (i + sLen > len) {
                 return -1;
             }
-            String s = haystack.substring(i,i+sLen);
-            if(s.equals(needle)){
+            String s = haystack.substring(i, i + sLen);
+            if (s.equals(needle)) {
                 return i;
             }
         }
