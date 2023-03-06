@@ -114,19 +114,18 @@ public class Numbers {
 
     // 1539. Kth Missing Positive Number
     public int findKthPositive(int[] arr, int k) {
-        int len = arr.length, j = 1;
-        for (int i = 0; i < len && k > 0; ++j) {
-            if (arr[i] == j) {
+        int len = arr.length, missingNum = 1;
+        for (int i = 0; i < len && k > 0; ++missingNum) {
+            if (arr[i] == missingNum) {
                 ++i;
                 continue;
             }
             --k;
-
         }
 
         if (k != 0) {
-            j = j + k;
+            missingNum = missingNum + k;
         }
-        return j - 1;
+        return missingNum - 1;
     }
 }
