@@ -111,4 +111,22 @@ public class Numbers {
         }
         return totCost;
     }
+
+    // 1539. Kth Missing Positive Number
+    public int findKthPositive(int[] arr, int k) {
+        int len = arr.length, j = 1;
+        for (int i = 0; i < len && k > 0; ++j) {
+            if (arr[i] == j) {
+                ++i;
+                continue;
+            }
+            --k;
+
+        }
+
+        if (k != 0) {
+            j = j + k;
+        }
+        return j - 1;
+    }
 }
