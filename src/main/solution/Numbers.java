@@ -128,4 +128,38 @@ public class Numbers {
         }
         return missingNum - 1;
     }
+
+    public int findKthPositive1(int[] arr, int k) {
+        int len = arr.length;
+        int start = 0, end = len - 1;
+        int mid = (start + end) / 2;
+
+        while (start <= end) { //&& mid != start && mid != end) {
+            int delta = arr[mid] - mid;
+            if (delta > k) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+            mid = (start + end) / 2;
+        }
+        return start + k;
+    }
+
+    int binSearchMissingNum(int[] arr, int k, int lo, int hi) {
+        if (lo > hi)
+            return lo + k;
+
+        int mid = (lo + hi) / 2;
+
+        int del = arr[mid] - mid;
+        if (del > k) {
+            return binSearchMissingNum(arr, k, lo, mid - 1);
+        }
+        return binSearchMissingNum(arr, k, mid + 1, hi);
+    }
+
+    public int findKthPositive2(int[] arr, int k) {
+        return binSearchMissingNum(arr, k, 0, arr.length - 1);
+    }
 }
