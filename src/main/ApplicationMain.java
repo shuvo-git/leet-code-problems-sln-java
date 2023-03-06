@@ -11,7 +11,7 @@ public class ApplicationMain {
 //        s.shipWithinDays(new int[]{1,2,3,4,5,6,7,8,9,10}, 5);
 
         StringProcessing sp = new StringProcessing();
-        sp.compress(new char[]{'a','c','c','b','b','b','b','b','b','b','b','b','b','b','b'});
+        int k = sp.compress(new char[]{'a','b','c'});
     }
 }
 

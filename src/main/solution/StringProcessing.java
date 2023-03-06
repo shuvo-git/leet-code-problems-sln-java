@@ -119,40 +119,43 @@ public class StringProcessing {
         return -1;
     }
 
-    // 443. String Compression
-    public int compress(char[] chars) {
-        int len = chars.length;
-
-        int cnt = 1, k = 0;
-        for (int i = 0, j = 0; i < len && j < len; ++j) {
-            if (chars[i] == chars[j]) {
-                if (i == j) {
-                    //cnt = 1;
-                    //chars[k++] = chars[i];
-                    continue;
-                } else {
-                    ++cnt;
-                }
-
-            } else {
-                if (cnt > 1) {
-                    String cntStr = "" + cnt;
-                    for (int indx = 0; indx < cntStr.length(); ++indx) {
-                        chars[k++] = cntStr.charAt(indx);
-                    }
-                    i = j;
-                    cnt = 1;
-                    chars[k++] = chars[i];
-                }
-            }
-        }
+    private int copyCount(char[] chars, int cnt, int k) {
         if (cnt > 1) {
             String cntStr = "" + cnt;
-            for (int indx = 0; indx < cntStr.length(); ++indx) {
-                chars[k++] = cntStr.charAt(indx);
+            if (k == 0) {
+                ++k;
+            }
+            for (int indx = 0; indx < cntStr.length(); ++indx, ++k) {
+                chars[k] = cntStr.charAt(indx);
             }
         }
         return k;
+    }
+
+    // 443. String Compression
+    public int compress(char[] chars) {
+
+        int len = chars.length, k = 0;
+
+        int cnt = 0;
+        for (int i = 0, j = 0; i < len && j < len && k < len; j++) {
+            if (chars[i] == chars[j]) {
+                ++cnt;
+                continue;
+            } else if (chars[i] != chars[j]) {
+                if (k == 0) {
+                    ++k;
+                }
+                k = this.copyCount(chars, cnt, k);
+
+                chars[k++] = chars[j];
+                i = j;
+                cnt = 1;
+            }
+        }
+
+        if (cnt == 1 && k == 0) return k + 1;
+        return this.copyCount(chars, cnt, k);
     }
 
 }
