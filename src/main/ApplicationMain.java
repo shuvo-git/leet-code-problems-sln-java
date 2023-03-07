@@ -7,15 +7,9 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-//        BinarySearch s = new BinarySearch();
-//        s.shipWithinDays(new int[]{1,2,3,4,5,6,7,8,9,10}, 5);
-
-//        StringProcessing sp = new StringProcessing();
-//        int k = sp.compress(new char[]{'a','b','c'});
-
-        Numbers numbers = new Numbers();
-        int f = numbers.findKthPositive2(new int[]{2,3,4,7,11,20,25},3);
-        System.out.println(f);
+        MinimumTimeToCompleteTrips m = new MinimumTimeToCompleteTrips();
+        long res = m.minimumTime(new int[]{3,3,8},6);
+        System.out.println(res);
     }
 }
 
