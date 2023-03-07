@@ -8,7 +8,7 @@ import main.solution.*;
 public class ApplicationMain {
     public static void main(String[] args) {
         MinimumTimeToCompleteTrips m = new MinimumTimeToCompleteTrips();
-        long res = m.minimumTime(new int[]{3,3,8},6);
+        long res = m.minimumTime(new int[]{1,1,1,1,1,1,1,1,1,1},10);
         System.out.println(res);
     }
 }
