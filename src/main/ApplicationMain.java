@@ -7,8 +7,8 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        MinimumTimeToCompleteTrips m = new MinimumTimeToCompleteTrips();
-        long res = m.minimumTime(new int[]{1,1,1,1,1,1,1,1,1,1},10);
+        BinarySearch m = new BinarySearch();
+        long res = m.shipWithinDays(new int[]{3,3,3,3,3,3},2);
         System.out.println(res);
     }
 }

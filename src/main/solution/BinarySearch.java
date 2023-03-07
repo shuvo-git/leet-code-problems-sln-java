@@ -2,43 +2,47 @@ package main.solution;
 
 public class BinarySearch {
 
-    private int bs(int lo, int hi, int[] weights, int days) {
-        if (hi == lo) {
-            return (int) hi;
-        }
-        int mid = (hi + lo) / 2;
-
-        int dayCount = 0;
+    int counts(int[] weights, int mid) {
         int sum = 0;
-        for (int i = 0; i < weights.length;++i) {
+        int dayCount = 0;
+        for (int i = 0; i < weights.length; ++i) {
             sum += weights[i];
             if (sum > mid) {
                 sum = weights[i];
                 ++dayCount;
             }
         }
-        if (sum != 0 && sum < mid) {
+        if (sum != 0 && sum <= mid) {
             ++dayCount;
         }
+        return dayCount;
+    }
 
-//        if(dayCount == days){
-//            return (int) mid;
-//        }
-//        else
-            if (dayCount < days) {
-            return bs(lo, mid, weights, days);
+    private int bs(int lo, int hi, int[] weights, int days) {
+        if (lo > hi) {
+            return lo;
+        }
+        int mid = (hi + lo) / 2;
+        int dayCount = this.counts(weights, mid);
+
+        if (dayCount <= days) {
+            return bs(lo, mid - 1, weights, days);
         } else {
-            return bs(mid+1, hi, weights, days);
+            return bs(mid + 1, hi, weights, days);
         }
     }
 
 
-    // 1011. [NOT SOLVED] Capacity To Ship Packages Within D Days
+    // 1011. Capacity To Ship Packages Within D Days
     public int shipWithinDays(int[] weights, int days) {
-        int sum = 0;
+        int sum = 0, mx = Integer.MIN_VALUE;
         for (int i = 0; i < weights.length; ++i) {
+            if (weights[i] > mx) {
+                mx = weights[i];
+            }
             sum += weights[i];
         }
-        return bs(1, sum, weights, days);
+        int lo = mx;
+        return bs(lo, sum, weights, days);
     }
 }
