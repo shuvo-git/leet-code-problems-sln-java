@@ -7,8 +7,8 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        BinarySearch m = new BinarySearch();
-        long res = m.shipWithinDays(new int[]{3,3,3,3,3,3},2);
+        KokoEatingBananas m = new KokoEatingBananas();
+        int res = m.minEatingSpeed(new int[]{3,6,7,11},8);
         System.out.println(res);
     }
 }
