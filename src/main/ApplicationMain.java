@@ -7,9 +7,8 @@ import main.solution.*;
  */
 public class ApplicationMain {
     public static void main(String[] args) {
-        KokoEatingBananas m = new KokoEatingBananas();
-        int res = m.minEatingSpeed(new int[]{3,6,7,11},8);
-        System.out.println(res);
+        LinkedList m = new LinkedList(new int[]{-1,-7,7,-4,19,6,-9,-5,-2,-5});
+        m.detectCycle(m.linkedList);
     }
 }
 
