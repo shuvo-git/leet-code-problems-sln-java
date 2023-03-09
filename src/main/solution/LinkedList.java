@@ -1,8 +1,6 @@
 package main.solution;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 /***************************
@@ -20,8 +18,7 @@ public class LinkedList {
             if (i == 0) {
                 linkedList = listNode;
                 current = linkedList;
-            }
-            else {
+            } else {
                 current.next = listNode;
                 current = current.next;
 
@@ -31,11 +28,11 @@ public class LinkedList {
 
     // 142. Linked List Cycle II
     public ListNode detectCycle(ListNode head) {
-        Set< ListNode> visited = new HashSet<>();
+        Set<ListNode> visited = new HashSet<>();
 
         while (head != null) {
             ListNode next = head.next;
-            if(visited.contains(next)){
+            if (visited.contains(next)) {
                 return next;
             }
 
@@ -43,6 +40,21 @@ public class LinkedList {
             head = head.next;
         }
         return head;
+    }
+    // 141. Linked List Cycle
+    public boolean hasCycle(ListNode head) {
+        Set<ListNode> visited = new HashSet<>();
+
+        while (head != null) {
+            ListNode next = head.next;
+            if (visited.contains(next)) {
+                return true;
+            }
+
+            visited.add(head);
+            head = head.next;
+        }
+        return false;
     }
 
     class ListNode {
