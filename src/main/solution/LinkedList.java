@@ -3,10 +3,6 @@ package main.solution;
 import java.util.HashSet;
 import java.util.Set;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class LinkedList {
     public ListNode linkedList;
 

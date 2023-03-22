@@ -1,9 +1,5 @@
 package main.solution;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class ValidPalindrome {
     public boolean isPalindrome(String s) {
         String converted = "";

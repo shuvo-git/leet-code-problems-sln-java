@@ -7,10 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class StringProcessing {
 
     private static final String NUMBER_PATTERN = "/^\\[+-]?d*\\.?\\d*$/";

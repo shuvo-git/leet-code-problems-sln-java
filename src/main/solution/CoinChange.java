@@ -2,25 +2,34 @@ package main.solution;
 
 import java.util.List;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class CoinChange {
-    // 39. Combination Sum
-    public long combinationSum(int[] coins, int target) {
-        return 0;
+    private static final int MX = 50;
+    int[] ways = new int[MX];
+
+    public CoinChange() {
+//        for (int i = 0; i < MX; ++i) {
+//            ways[i] = -1;
+//        }
+//        ways[0] = 1;
     }
 
-    public List<List<Integer>> combinationSumRec(int[] coins, int target, List<List<Integer>> ways) {
-        if (target < 0) {
-            return null;
+    // 39. Combination Sum
+    public List<List<Integer>> combinationSum(int[] coins, int target) {
+        return null;
+    }
+
+    public int combinationSumRec(int[] coins, int target, int n) {
+        if (target == 0) return 1;
+        if (target < 0 || n < 0) return 0;
+
+        if (ways[target] != 0) {
+            return ways[target];
         }
 
-        for (int i = 0; i < coins.length; ++i) {
-            combinationSumRec(coins, target - coins[i], ways);
-        }
+        int incl = combinationSumRec(coins, target - coins[n], n);
+        int excl = combinationSumRec(coins, target, n - 1);
 
-        return ways;
+        ways[target] = incl + excl;
+        return ways[target];
     }
 }

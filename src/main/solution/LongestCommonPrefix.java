@@ -1,9 +1,5 @@
 package main.solution;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
         int len = strs.length;

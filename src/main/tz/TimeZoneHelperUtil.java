@@ -5,10 +5,6 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**********************************************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class TimeZoneHelperUtil {
     private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 

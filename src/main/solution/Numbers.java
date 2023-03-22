@@ -3,10 +3,6 @@ package main.solution;
 import java.util.HashMap;
 import java.util.Map;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class Numbers {
     int[] fib = new int[46];
 

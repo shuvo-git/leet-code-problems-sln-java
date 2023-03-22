@@ -1,14 +1,17 @@
 package main;
 
-import main.solution.*;
+import main.solution.CoinChange;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 /********************************************************
  * {@link Name: } Jobayed Ullah
  */
 public class ApplicationMain {
-    public static void main(String[] args) {
-        LinkedList m = new LinkedList(new int[]{-1,-7,7,-4,19,6,-9,-5,-2,-5});
-        m.detectCycle(m.linkedList);
+    public static void main(String[] args) throws Exception {
+        TestForOptional t = new TestForOptional();
+        Abcd x = Optional.ofNullable(t.getAbcd()).orElseThrow(Exception::new);
     }
 }
 

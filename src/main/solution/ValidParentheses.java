@@ -2,10 +2,6 @@ package main.solution;
 
 import java.util.Stack;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class ValidParentheses {
 
     private char closing(char i) {

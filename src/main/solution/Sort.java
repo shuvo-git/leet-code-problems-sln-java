@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class Sort {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
 

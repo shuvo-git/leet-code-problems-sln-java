@@ -1,9 +1,5 @@
 package main.solution;
 
-/***************************
- * {@link Name: } Jobayed Ullah
- */
-
 public class Line {
     /***
      * slope = (Ax-Bx)/(Ay-By)
