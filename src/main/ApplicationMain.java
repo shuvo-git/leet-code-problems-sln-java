@@ -1,6 +1,7 @@
 package main;
 
 import main.solution.CoinChange;
+import main.solution.SqrtX;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
@@ -10,8 +11,9 @@ import java.util.Optional;
  */
 public class ApplicationMain {
     public static void main(String[] args) throws Exception {
-        TestForOptional t = new TestForOptional();
-        Abcd x = Optional.ofNullable(t.getAbcd()).orElseThrow(Exception::new);
+        SqrtX s = new SqrtX();
+        String res = s.addStrings("456","77");
+        System.out.println(res);
     }
 }
 
