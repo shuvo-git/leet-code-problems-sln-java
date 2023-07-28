@@ -1,5 +1,6 @@
 package main;
 
+import main.parser.ExpressionParser;
 import main.solution.CoinChange;
 import main.solution.SqrtX;
 
@@ -11,11 +12,9 @@ import java.util.Optional;
  */
 public class ApplicationMain {
     public static void main(String[] args) throws Exception {
-        String[] fff =".".split("||/");
-        System.out.println(fff.length);
-        SqrtX s = new SqrtX();
-        String res = s.addStrings("456","77");
-        System.out.println(res);
+        String exp = "(Q1A1 AND Q2A3) OR (Q3A3 OR Q4A1)";
+        String ans = ExpressionParser.convertToNumericFormat(exp);
+        System.out.println(ans);
     }
 }
 

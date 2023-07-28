@@ -1,6 +1,10 @@
 package main.parser;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /***************************
  * @Author: Jobayed Ullah
@@ -11,9 +15,29 @@ import java.util.Stack;
 
 
 public class ExpressionParser {
-    // Variables and methods same as in the previous response...
+    Map<String, Boolean> variables = new HashMap<>();
 
-    // Parser helper methods
+
+    public static String convertToNumericFormat(String inputExpression) {
+        Pattern pattern = Pattern.compile("AND|OR|Q(\\d+)A(\\d+)");
+        Matcher matcher = pattern.matcher(inputExpression);
+        StringBuffer outputExpression = new StringBuffer();
+
+        while (matcher.find()) {
+            if (matcher.group().equals("AND")) {
+                matcher.appendReplacement(outputExpression, "*");
+            } else if (matcher.group().equals("OR")) {
+                matcher.appendReplacement(outputExpression, "+");
+            } else {
+                String numFormat = "(" + matcher.group(1) + "-" + matcher.group(2) + ")";
+                matcher.appendReplacement(outputExpression, numFormat);
+            }
+        }
+
+        matcher.appendTail(outputExpression);
+        return outputExpression.toString();
+    }
+
     private boolean isOperator(char ch) {
         return ch == '&' || ch == '|' || ch == '!';
     }
