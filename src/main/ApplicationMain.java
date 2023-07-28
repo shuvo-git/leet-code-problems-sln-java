@@ -11,6 +11,8 @@ import java.util.Optional;
  */
 public class ApplicationMain {
     public static void main(String[] args) throws Exception {
+        String[] fff =".".split("||/");
+        System.out.println(fff.length);
         SqrtX s = new SqrtX();
         String res = s.addStrings("456","77");
         System.out.println(res);
