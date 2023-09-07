@@ -1,48 +1,19 @@
 package main;
 
-import main.parser.ExpressionParser;
-import main.solution.CoinChange;
-import main.solution.SqrtX;
+import main.parser.ExpressionParser2;
 
-import javax.swing.text.html.Option;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /********************************************************
- * {@link Name: } Jobayed Ullah
+ * Name: Jobayed Ullah
  */
 public class ApplicationMain {
     public static void main(String[] args) throws Exception {
-        String exp = "(Q1A1 AND Q2A3) OR (Q3A3 OR Q4A1)";
-        String ans = ExpressionParser.convertToNumericFormat(exp);
-        System.out.println(ans);
+        String exp = "(Q1A1 AND Q2A3) OR (Q3A3 OR Q4A1) AND (Q10A2 AND Q11-1A2 AND Q12A3R1 AND NOT Q13-1) ";
+        ExpressionParser2 expressionParser = new ExpressionParser2(exp);
+        expressionParser.evaluate("Q1A1 Q4A1 Q10A2 Q11-1A2 Q12A3R1");
+        expressionParser.evaluate("Q1A1 Q1 Q4A1 Q10A2 Q11-1A2 Q12A3R1");
     }
 }
-
-
-//        String startDate = TimeZoneHelperUtil.convertToSeoulTime(
-//                "2022-11-15 00:00:00",
-//                "Asia/Dhaka"
-//
-//        );
-//
-//        String endDate = TimeZoneHelperUtil.convertToSeoulTime(
-//                "2022-11-15 23:59:59",
-//                "Asia/Dhaka"
-//
-//        );
-//
-//        System.out.println(startDate + " - " + endDate);
-//
-//        String startDateOrig = TimeZoneHelperUtil.convertToZonedTime(
-//                startDate,
-//                "Asia/Dhaka"
-//
-//        );
-//
-//        String endDateOrig = TimeZoneHelperUtil.convertToZonedTime(
-//                endDate,
-//                "Asia/Dhaka"
-//
-//        );
-//
-//        System.out.println(startDateOrig + " - " + endDateOrig);

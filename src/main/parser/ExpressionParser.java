@@ -15,28 +15,8 @@ import java.util.regex.Pattern;
 
 
 public class ExpressionParser {
+
     Map<String, Boolean> variables = new HashMap<>();
-
-
-    public static String convertToNumericFormat(String inputExpression) {
-        Pattern pattern = Pattern.compile("AND|OR|Q(\\d+)A(\\d+)");
-        Matcher matcher = pattern.matcher(inputExpression);
-        StringBuffer outputExpression = new StringBuffer();
-
-        while (matcher.find()) {
-            if (matcher.group().equals("AND")) {
-                matcher.appendReplacement(outputExpression, "*");
-            } else if (matcher.group().equals("OR")) {
-                matcher.appendReplacement(outputExpression, "+");
-            } else {
-                String numFormat = "(" + matcher.group(1) + "-" + matcher.group(2) + ")";
-                matcher.appendReplacement(outputExpression, numFormat);
-            }
-        }
-
-        matcher.appendTail(outputExpression);
-        return outputExpression.toString();
-    }
 
     private boolean isOperator(char ch) {
         return ch == '&' || ch == '|' || ch == '!';
