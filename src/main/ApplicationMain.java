@@ -2,10 +2,6 @@ package main;
 
 import main.parser.ExpressionParser2;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /********************************************************
  * Name: Jobayed Ullah
  */
