@@ -19,6 +19,7 @@ public class GroupSize {
         for (int i = 0; i < groupSizes.length; ++i) {
             nodes.add(new Node(groupSizes[i],i));
         }
+        return null;
 
     }
 
