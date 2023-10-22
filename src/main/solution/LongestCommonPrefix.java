@@ -3,7 +3,7 @@ package main.solution;
 public class LongestCommonPrefix {
     public String longestCommonPrefix(String[] strs) {
         int len = strs.length;
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int indx = 0; indx < 200; ++indx) {
             boolean matched = true;
             char cur = 0;
@@ -20,10 +20,10 @@ public class LongestCommonPrefix {
                     }
                 }
             } else matched = false;
-            if (matched == false)
+            if (!matched)
                 break;
-            else result += cur;
+            else result.append(cur);
         }
-        return result;
+        return result.toString();
     }
 }
