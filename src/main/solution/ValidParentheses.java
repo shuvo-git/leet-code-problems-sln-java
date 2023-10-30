@@ -11,6 +11,13 @@ public class ValidParentheses {
         System.out.println(v.longestValidParentheses(""));
         System.out.println(v.longestValidParentheses("()"));
         System.out.println(v.longestValidParentheses("(()())"));
+        System.out.println(v.longestValidParentheses(")(((((()())()()))()(()))("));
+        System.out.println(v.longestValidParentheses("(()()"));
+        System.out.println(v.longestValidParentheses("()(()((("));
+
+//        String s = "(()())";
+//        int mx = v.rec(s, 0, 0, new Stack<Character>(), 0);
+//        System.out.println(mx);
     }
 
     private char closing(char i) {
@@ -46,53 +53,121 @@ public class ValidParentheses {
         return false;
     }
 
-    public int validateParentheses(int i, int len, String s) {
-        Stack<Character> stack = new Stack<>();
-        int[] dp = new int[len];
-        for (int j = i; j < len; ++j) {
-            if (s.charAt(j) == '(') {
-                stack.push('(');
-            } else {
-                if (stack.empty()) {
-                    dp[j] = 0;
-                    continue;
-                }
-
-                int k = j;
-                while (k < len && s.charAt(k) == ')' && !stack.isEmpty()) {
-                    stack.pop();
-                    ++k;
-                }
-
-                if (stack.empty()) {
-                    int tmp = (k - j) * 2;
-                    int dpIndx = k - tmp - 1;
-                    if (dpIndx >= 0 && dp[dpIndx] != 0)
-                        dp[j] = dp[dpIndx] + tmp;
-                    else dp[j] = tmp;
-                    j = k - 1;
-                }
-            }
-        }
-
-        int max = 0;
-        for (int m = 0; m < len; ++m) {
-            if (dp[m] > max)
-                max = dp[m];
-        }
-        return max;
-    }
+//    public int validateParentheses(int i, int len, String s) {
+//        Stack<Character> stack = new Stack<>();
+//        int[] dp = new int[len];
+//        for (int j = i; j < len; ++j) {
+//            if (s.charAt(j) == '(') {
+//                stack.push('(');
+//            } else {
+//                if (stack.empty()) {
+//                    dp[j] = 0;
+//                    continue;
+//                }
+//
+//                int k = j;
+//                while (k < len && s.charAt(k) == ')' && !stack.isEmpty()) {
+//                    stack.pop();
+//                    ++k;
+//                }
+//
+//                if (stack.empty()) {
+//                    int tmp = (k - j) * 2;
+//                    int dpIndx = k - tmp - 1;
+//                    if (dpIndx >= 0 && dp[dpIndx] != 0)
+//                        dp[j] = dp[dpIndx] + tmp;
+//                    else dp[j] = tmp;
+//                }
+//                j = k - 1;
+//            }
+//        }
+//
+//        int max = 0;
+//        for (int m = 0; m < len; ++m) {
+//            if (dp[m] > max)
+//                max = dp[m];
+//        }
+//        return max;
+//    }
 
     // 32. Longest Valid Parenthesis
-    public int longestValidParentheses(String s) {
-        int len = s.length();
-        int maxLen = 0;
+//    public int longestValidParentheses(String s) {
+//        int len = s.length();
+//        int ans = 0;
+//
+//        int maxLen = 0;
+//        int tmp = 0;
+//        Stack<Character> stack = new Stack<>();
+//        for (int i = 0; i < len; ++i) {
+//            char c = s.charAt(i);
+//            if (c == '(') {
+//                stack.push('(');
+//            } else {
+//                if (stack.isEmpty()) {
+//                    maxLen += tmp;
+//                    tmp = 0;
+//                    ans = Math.max(ans, maxLen);
+//                    maxLen = 0;
+//                } else {
+//                    tmp += 2;
+//                }
+//            }
+//
+//        }
+//
+//        //if(stack.isEmpty())
+//            maxLen += tmp;
+//        ans = Math.max(ans, maxLen);
+//        return ans;
+//
+//    }
 
-        for (int i = 0; i < len; ++i) {
-            int tmp = validateParentheses(i, len, s);
-            maxLen = Math.max(tmp, maxLen);
+    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int tmp, int max) {
+        if (i > j || j >= s.length())
+            return max;
+
+        char c = s.charAt(j);
+        if (c == '(') {
+            stack.push(c);
+        } else {
+            if (stack.isEmpty()) {
+                max = Math.max(max, tmp);
+                return Math.max(max, recursiveCheckParenthesis(s, j + 1, j + 1, stack, 0, max));
+            } else {
+                stack.pop();
+                tmp += 2;
+
+                if (j == s.length() - 1 && !stack.isEmpty()) {
+                    return Math.max(max, recursiveCheckParenthesis(s, i + 1, i + 1, new Stack<>(), 0, max));
+                }
+            }
+
+            if (stack.isEmpty()) {
+                max += tmp;
+            }
         }
-        return maxLen;
-
+        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, tmp, max));
     }
+
+    public int longestValidParentheses(String s) {
+        return recursiveCheckParenthesis(s, 0, 0, new Stack<>(), 0, 0);
+    }
+
+//    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int max) {
+//        if (j >= s.length())
+//            return 0;
+//        char c = s.charAt(j);
+//        if (c == '(') {
+//            stack.push(c);
+//        } else if (stack.isEmpty()) {
+//            return 0;
+//        } else {
+//            stack.pop();
+//        }
+//
+//        if (stack.empty()) {
+//            max = Math.max(j - i + 1, max);
+//        }
+//        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, max));
+//    }
 }
