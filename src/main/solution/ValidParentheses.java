@@ -6,18 +6,32 @@ public class ValidParentheses {
 
     public static void main(String[] args) {
         ValidParentheses v = new ValidParentheses();
-        System.out.println(v.longestValidParentheses("(()"));
-        System.out.println(v.longestValidParentheses(")()())"));
-        System.out.println(v.longestValidParentheses(""));
-        System.out.println(v.longestValidParentheses("()"));
-        System.out.println(v.longestValidParentheses("(()())"));
-        System.out.println(v.longestValidParentheses(")(((((()())()()))()(()))("));
-        System.out.println(v.longestValidParentheses("(()()"));
-        System.out.println(v.longestValidParentheses("()(()((("));
+
+        System.out.println(v.longestValidParentheses("))(())))(()())))((("));
+//        System.out.println(v.longestValidParentheses("(()"));
+//        System.out.println(v.longestValidParentheses(")()())"));
+//        System.out.println(v.longestValidParentheses(""));
+//        System.out.println(v.longestValidParentheses("()"));
+//        System.out.println(v.longestValidParentheses("(()())"));
+//        System.out.println(v.longestValidParentheses(")(((((()())()()))()(()))("));
+//        System.out.println(v.longestValidParentheses("(()()"));
+//        System.out.println(v.longestValidParentheses("()(()((("));
 
 //        String s = "(()())";
 //        int mx = v.rec(s, 0, 0, new Stack<Character>(), 0);
 //        System.out.println(mx);
+    }
+
+    private void init() {
+        String s = "))(())))(()())))(((";
+        for (int i = 0; i < s.length(); ++i) {
+            System.out.printf("%3d ", i);
+        }
+        System.out.println();
+        for (int i = 0; i < s.length(); ++i) {
+            System.out.printf("%3c ", s.charAt(i));
+        }
+        System.out.println();
     }
 
     private char closing(char i) {
@@ -122,36 +136,33 @@ public class ValidParentheses {
 //
 //    }
 
-    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int tmp, int max) {
-        if (i > j || j >= s.length())
-            return max;
+//    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int tmp, int max) {
+//        if (i > j || j >= s.length())
+//            return max;
+//
+//        char c = s.charAt(j);
+//        if (c == '(') {
+//            stack.push(c);
+//        } else {
+//            if (stack.isEmpty()) {
+//                max = Math.max(max, tmp);
+//                return Math.max(max, recursiveCheckParenthesis(s, j + 1, j + 1, stack, 0, max));
+//            } else {
+//                stack.pop();
+//                tmp += 2;
+//
+//                if (j == s.length() - 1 && !stack.isEmpty()) {
+//                    return Math.max(max, recursiveCheckParenthesis(s, i + 1, i + 1, new Stack<>(), 0, max));
+//                }
+//            }
+//
+//            if (stack.isEmpty()) {
+//                max += tmp;
+//            }
+//        }
+//        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, tmp, max));
+//    }
 
-        char c = s.charAt(j);
-        if (c == '(') {
-            stack.push(c);
-        } else {
-            if (stack.isEmpty()) {
-                max = Math.max(max, tmp);
-                return Math.max(max, recursiveCheckParenthesis(s, j + 1, j + 1, stack, 0, max));
-            } else {
-                stack.pop();
-                tmp += 2;
-
-                if (j == s.length() - 1 && !stack.isEmpty()) {
-                    return Math.max(max, recursiveCheckParenthesis(s, i + 1, i + 1, new Stack<>(), 0, max));
-                }
-            }
-
-            if (stack.isEmpty()) {
-                max += tmp;
-            }
-        }
-        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, tmp, max));
-    }
-
-    public int longestValidParentheses(String s) {
-        return recursiveCheckParenthesis(s, 0, 0, new Stack<>(), 0, 0);
-    }
 
 //    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int max) {
 //        if (j >= s.length())
@@ -170,4 +181,44 @@ public class ValidParentheses {
 //        }
 //        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, max));
 //    }
+
+    public int longestValidParentheses(String s) {
+        int len = s.length();
+        Stack<Integer> stack = new Stack<>();
+
+        int ans = 0;
+        int trashIndx = 0;
+        for (int i = 1; i <= len; ++i) {
+            System.out.println(i + ".........................");
+            init();
+            if (s.charAt(i - 1) == '(') {
+                System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                stack.push(i);
+            } else {
+                if (stack.isEmpty()) {
+                    System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                    trashIndx = i;
+                    System.out.println("Changed Trash Index");
+                    System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                    continue;
+                } else {
+                    System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                    stack.pop();
+                }
+
+                System.out.printf("Stack Empty = %b , trashIndx = %d , Stack Top = %d\n", stack.isEmpty(), trashIndx,
+                        stack.isEmpty() ? -1 : stack.peek());
+                int tmp = stack.isEmpty() ? trashIndx : stack.peek();
+                System.out.println("Tmp = " + tmp);
+                System.out.printf("i - Tmp = (%d - %d) = %d\n", i, tmp, (i - tmp));
+
+
+                System.out.printf("Ans = Max( %d , %d ) = %d\n", ans, i - tmp, Math.max(ans, i - tmp));
+                ans = Math.max(ans, i - tmp);
+            }
+        }
+        System.out.println("**************************************************************************");
+        System.out.println("**************************************************************************");
+        return ans;
+    }
 }
