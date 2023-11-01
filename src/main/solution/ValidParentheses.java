@@ -22,8 +22,22 @@ public class ValidParentheses {
 //        System.out.println(mx);
     }
 
-    private void init() {
+    private void init(int trashIndx, int ii) {
         String s = "))(())))(()())))(((";
+        System.out.println("........................." + (ii - 1) + "....................................................");
+
+        for (int i = 0; i < s.length(); ++i) {
+            if (i == trashIndx && i == ii)
+                System.out.printf("%3s ", "t,i");
+            else if (i == trashIndx)
+                System.out.printf("%3c ", 't');
+            else if (i == ii)
+                System.out.printf("%3c ", 'i');
+            else
+                System.out.printf("%4c", ' ');
+        }
+        System.out.println();
+
         for (int i = 0; i < s.length(); ++i) {
             System.out.printf("%3d ", i);
         }
@@ -189,8 +203,8 @@ public class ValidParentheses {
         int ans = 0;
         int trashIndx = 0;
         for (int i = 1; i <= len; ++i) {
-            System.out.println(i + ".........................");
-            init();
+
+            init(trashIndx, i);
             if (s.charAt(i - 1) == '(') {
                 System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
                 stack.push(i);
