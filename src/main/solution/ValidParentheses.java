@@ -24,7 +24,7 @@ public class ValidParentheses {
 
     private void init(int trashIndx, int ii) {
         String s = "))(())))(()())))(((";
-        System.out.println("........................." + (ii - 1) + "....................................................");
+        System.out.println("......................... i-1 = " + (ii - 1) + "....................................................");
 
         for (int i = 0; i < s.length(); ++i) {
             if (i == trashIndx && i == ii)
@@ -81,121 +81,6 @@ public class ValidParentheses {
         return false;
     }
 
-//    public int validateParentheses(int i, int len, String s) {
-//        Stack<Character> stack = new Stack<>();
-//        int[] dp = new int[len];
-//        for (int j = i; j < len; ++j) {
-//            if (s.charAt(j) == '(') {
-//                stack.push('(');
-//            } else {
-//                if (stack.empty()) {
-//                    dp[j] = 0;
-//                    continue;
-//                }
-//
-//                int k = j;
-//                while (k < len && s.charAt(k) == ')' && !stack.isEmpty()) {
-//                    stack.pop();
-//                    ++k;
-//                }
-//
-//                if (stack.empty()) {
-//                    int tmp = (k - j) * 2;
-//                    int dpIndx = k - tmp - 1;
-//                    if (dpIndx >= 0 && dp[dpIndx] != 0)
-//                        dp[j] = dp[dpIndx] + tmp;
-//                    else dp[j] = tmp;
-//                }
-//                j = k - 1;
-//            }
-//        }
-//
-//        int max = 0;
-//        for (int m = 0; m < len; ++m) {
-//            if (dp[m] > max)
-//                max = dp[m];
-//        }
-//        return max;
-//    }
-
-    // 32. Longest Valid Parenthesis
-//    public int longestValidParentheses(String s) {
-//        int len = s.length();
-//        int ans = 0;
-//
-//        int maxLen = 0;
-//        int tmp = 0;
-//        Stack<Character> stack = new Stack<>();
-//        for (int i = 0; i < len; ++i) {
-//            char c = s.charAt(i);
-//            if (c == '(') {
-//                stack.push('(');
-//            } else {
-//                if (stack.isEmpty()) {
-//                    maxLen += tmp;
-//                    tmp = 0;
-//                    ans = Math.max(ans, maxLen);
-//                    maxLen = 0;
-//                } else {
-//                    tmp += 2;
-//                }
-//            }
-//
-//        }
-//
-//        //if(stack.isEmpty())
-//            maxLen += tmp;
-//        ans = Math.max(ans, maxLen);
-//        return ans;
-//
-//    }
-
-//    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int tmp, int max) {
-//        if (i > j || j >= s.length())
-//            return max;
-//
-//        char c = s.charAt(j);
-//        if (c == '(') {
-//            stack.push(c);
-//        } else {
-//            if (stack.isEmpty()) {
-//                max = Math.max(max, tmp);
-//                return Math.max(max, recursiveCheckParenthesis(s, j + 1, j + 1, stack, 0, max));
-//            } else {
-//                stack.pop();
-//                tmp += 2;
-//
-//                if (j == s.length() - 1 && !stack.isEmpty()) {
-//                    return Math.max(max, recursiveCheckParenthesis(s, i + 1, i + 1, new Stack<>(), 0, max));
-//                }
-//            }
-//
-//            if (stack.isEmpty()) {
-//                max += tmp;
-//            }
-//        }
-//        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, tmp, max));
-//    }
-
-
-//    int recursiveCheckParenthesis(String s, int i, int j, Stack<Character> stack, int max) {
-//        if (j >= s.length())
-//            return 0;
-//        char c = s.charAt(j);
-//        if (c == '(') {
-//            stack.push(c);
-//        } else if (stack.isEmpty()) {
-//            return 0;
-//        } else {
-//            stack.pop();
-//        }
-//
-//        if (stack.empty()) {
-//            max = Math.max(j - i + 1, max);
-//        }
-//        return Math.max(max, recursiveCheckParenthesis(s, i, j + 1, stack, max));
-//    }
-
     public int longestValidParentheses(String s) {
         int len = s.length();
         Stack<Integer> stack = new Stack<>();
@@ -206,29 +91,42 @@ public class ValidParentheses {
 
             init(trashIndx, i);
             if (s.charAt(i - 1) == '(') {
-                System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                System.out.printf("Found Opening curly brace at (i-1) = %d th  index.\n " +
+                        "Pushing i = %d to Stack\n", i-1, i);
+
                 stack.push(i);
             } else {
+                System.out.printf("Found Closing curly brace at (i-1) = %d th  index.\n",i-1);
                 if (stack.isEmpty()) {
-                    System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                    System.out.printf("Try to pop but stack is empty.\n " +
+                            "So changing TrashIndex to i = %d\n ", i);
                     trashIndx = i;
-                    System.out.println("Changed Trash Index");
-                    System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
                     continue;
                 } else {
-                    System.out.printf("(i-1) = %d, i = %d , trashIndx = %d, ans = %d\n", i - 1, i, trashIndx, ans);
+                    System.out.println("Popped stack top = "+stack.peek());
                     stack.pop();
                 }
 
-                System.out.printf("Stack Empty = %b , trashIndx = %d , Stack Top = %d\n", stack.isEmpty(), trashIndx,
-                        stack.isEmpty() ? -1 : stack.peek());
+                System.out.printf("Now stack is %s empty\n",stack.isEmpty() ?"":"not");
+
+                if(stack.isEmpty())
+                    System.out.printf("So we will get the difference between i = %d and trashIndex = %d\n" +
+                            "And This diff is (i-trashIndex) = (%d - %d) = %d\n",i, trashIndx,i, trashIndx, i-trashIndx);
+
+                else
+                    System.out.printf("So we will get the difference between i = %d and Stack Top = %d\n" +
+                        "And This diff is (i-Stack Top) = (%d - %d) = %d\n",i, stack.peek(),i, stack.peek(), i-stack.peek());
+
                 int tmp = stack.isEmpty() ? trashIndx : stack.peek();
-                System.out.println("Tmp = " + tmp);
-                System.out.printf("i - Tmp = (%d - %d) = %d\n", i, tmp, (i - tmp));
 
+                System.out.println("We will now find the maximum value between current answer and our probable answer");
+                System.out.println("Our current answer is "+ans);
+                System.out.println("our probable answer is "+(i-tmp));
+                //System.out.printf("Ans = = Max( Ans = %d , (i-Tmp) = %d ) = %d\n", ans, i - tmp, Math.max(ans, i - tmp));
 
-                System.out.printf("Ans = Max( %d , %d ) = %d\n", ans, i - tmp, Math.max(ans, i - tmp));
                 ans = Math.max(ans, i - tmp);
+
+                System.out.println("So, maximum between this two is "+ ans);
             }
         }
         System.out.println("**************************************************************************");
