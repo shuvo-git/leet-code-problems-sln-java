@@ -92,41 +92,40 @@ public class ValidParentheses {
             init(trashIndx, i);
             if (s.charAt(i - 1) == '(') {
                 System.out.printf("Found Opening curly brace at (i-1) = %d th  index.\n " +
-                        "Pushing i = %d to Stack\n", i-1, i);
+                        "Pushing i = %d to Stack\n", i - 1, i);
 
                 stack.push(i);
             } else {
-                System.out.printf("Found Closing curly brace at (i-1) = %d th  index.\n",i-1);
+                System.out.printf("Found Closing curly brace at (i-1) = %d th  index.\n", i - 1);
                 if (stack.isEmpty()) {
                     System.out.printf("Try to pop but stack is empty.\n " +
                             "So changing TrashIndex to i = %d\n ", i);
                     trashIndx = i;
                     continue;
                 } else {
-                    System.out.println("Popped stack top = "+stack.peek());
+                    System.out.println("Popped stack top = " + stack.peek());
                     stack.pop();
                 }
 
-                System.out.printf("Now stack is %s empty\n",stack.isEmpty() ?"":"not");
+                System.out.printf("Now stack is %s empty\n", stack.isEmpty() ? "" : "not");
 
-                if(stack.isEmpty())
+                if (stack.isEmpty())
                     System.out.printf("So we will get the difference between i = %d and trashIndex = %d\n" +
-                            "And This diff is (i-trashIndex) = (%d - %d) = %d\n",i, trashIndx,i, trashIndx, i-trashIndx);
+                            "And This diff is (i-trashIndex) = (%d - %d) = %d\n", i, trashIndx, i, trashIndx, i - trashIndx);
 
                 else
                     System.out.printf("So we will get the difference between i = %d and Stack Top = %d\n" +
-                        "And This diff is (i-Stack Top) = (%d - %d) = %d\n",i, stack.peek(),i, stack.peek(), i-stack.peek());
+                            "And This diff is (i-Stack Top) = (%d - %d) = %d\n", i, stack.peek(), i, stack.peek(), i - stack.peek());
 
                 int tmp = stack.isEmpty() ? trashIndx : stack.peek();
 
                 System.out.println("We will now find the maximum value between current answer and our probable answer");
-                System.out.println("Our current answer is "+ans);
-                System.out.println("our probable answer is "+(i-tmp));
-                //System.out.printf("Ans = = Max( Ans = %d , (i-Tmp) = %d ) = %d\n", ans, i - tmp, Math.max(ans, i - tmp));
+                System.out.println("Our current answer is " + ans);
+                System.out.println("our probable answer is " + (i - tmp));
 
                 ans = Math.max(ans, i - tmp);
 
-                System.out.println("So, maximum between this two is "+ ans);
+                System.out.println("So, maximum between this two is " + ans);
             }
         }
         System.out.println("**************************************************************************");
