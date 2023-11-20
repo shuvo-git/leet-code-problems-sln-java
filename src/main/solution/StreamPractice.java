@@ -47,7 +47,6 @@ class Node //implements Comparable<Node>
 }
 
 public class StreamPractice {
-
     public static void main(String[] args) {
         List<Node> nodes = new ArrayList<>();
         Random random = new Random();
@@ -61,7 +60,8 @@ public class StreamPractice {
         }
 
         List<Node> tmp = nodes.stream()
-                .sorted(Comparator.comparing(Node::getName).thenComparing(Node::getVal))
+                .sorted(Comparator.comparing(Node::getName)
+                                .thenComparing(Node::getVal))
                 .collect(Collectors.toList());
 
         System.out.println();
