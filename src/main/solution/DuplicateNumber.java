@@ -16,4 +16,46 @@ public class DuplicateNumber {
         }
         return k + 1;
     }
+
+    public ListNode deleteDuplicates(ListNode head) {
+
+        if (head == null) return head;
+
+
+        ListNode current = head;
+        int v = current.val;
+
+        while (current.next != null) {
+            ListNode tmp = current.next;
+
+            if (tmp.val == v) {
+                current.next = tmp.next;
+            }
+            else {
+                v = tmp.val;
+                current = current.next;
+            }
+        }
+        return head;
+    }
+
+    /**
+     * Definition for singly-linked list.
+     */
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
 }
