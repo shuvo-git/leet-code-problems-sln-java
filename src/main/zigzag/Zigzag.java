@@ -2,35 +2,57 @@ package main.zigzag;
 
 public class Zigzag {
     public static void main(String[] args) {
-        String s = "thisisazigzag";
+        String s1 = "thisisazigzag";
+        String s = "0123456789ABC";
         printSpiral(s, 4);
     }
 
-    public static void printSpiral(String s, int k) {
-        //System.out.printf("%c %c %c", s.charAt(0), s.charAt(6), s.charAt(12));
+    public static void printSpiral(String str, int k) {
+        System.out.println(str);
+        int len = str.length();
+
+        int nextFactor = (k - 1) * 2;
 
 
-        int len = s.length();
+        for (int i = 0; i < len; i = i + nextFactor) {
+            System.out.printf("%c", str.charAt(i));
+            printSpace(nextFactor-1);
 
-        for (int i = 0, p = k; i < k; ++i, p = p - 2) {
+        }
+        System.out.println();
 
-            // print space before every line
-            for (int sp = 0; sp < i; ++sp) {
-                System.out.printf("%c", ' ');
-            }
+        for (int rowStart = 1; rowStart < k; ++rowStart) {
+            for (int i = rowStart; i < len; i = i + nextFactor) {
 
-            for (int j = i; j < len; j = j + p + 2) {
-                // print each character
-                System.out.print(s.charAt(i));
+                printSpace(rowStart, ' ');
+                if(i>1)printSpace(rowStart-1, ' ');
 
-                // Print space between character
-                int spaceCount = p+1;
-                while (spaceCount != 0) {
-                    System.out.printf("%c", ' ');
-                    --spaceCount;
+                int left = i;
+                int right = i + nextFactor - rowStart * 2;
+
+                if (right < len) {
+                    if (left == right)
+                        System.out.printf("%c", str.charAt(left));
+                    else {
+                        System.out.printf("%c", str.charAt(left));
+                        printSpace(right - left-1);
+                        System.out.printf("%c", str.charAt(right));
+                    }
                 }
             }
             System.out.println();
+        }
+    }
+
+    public static void printSpace(int numOfSpace) {
+        while (numOfSpace-- != 0) {
+            System.out.printf("%c", ' ');
+        }
+    }
+
+    public static void printSpace(int numOfSpace, char c) {
+        while (numOfSpace-- != 0) {
+            System.out.printf("%c", c);
         }
     }
 }
