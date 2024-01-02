@@ -3,8 +3,12 @@ package main.zigzag;
 public class Zigzag {
     public static void main(String[] args) {
         String s1 = "thisisazigzag";
+        String s2 = "thisisazigzagandthisisalsoazigzag";
         String s = "0123456789ABC";
-        printSpiral(s, 4);
+
+        printSpiral(s, 5);
+        printSpiral(s1, 5);
+        printSpiral(s2, 5);
     }
 
     public static void printSpiral(String str, int k) {
@@ -16,29 +20,31 @@ public class Zigzag {
 
         for (int i = 0; i < len; i = i + nextFactor) {
             System.out.printf("%c", str.charAt(i));
-            printSpace(nextFactor-1);
+            printSpace(nextFactor - 1, ' ');
 
         }
         System.out.println();
 
         for (int rowStart = 1; rowStart < k; ++rowStart) {
-            for (int i = rowStart; i < len; i = i + nextFactor) {
+            for (int left = rowStart; left < len; left += nextFactor) {
 
                 printSpace(rowStart, ' ');
-                if(i>1)printSpace(rowStart-1, ' ');
+                if (left >= nextFactor) printSpace(rowStart - 1, ' ');
 
-                int left = i;
-                int right = i + nextFactor - rowStart * 2;
+                //int left = i;
+                int right = left + nextFactor - rowStart * 2;
 
-                if (right < len) {
-                    if (left == right)
-                        System.out.printf("%c", str.charAt(left));
-                    else {
-                        System.out.printf("%c", str.charAt(left));
-                        printSpace(right - left-1);
+                //if (right < len) {
+                if (left == right)
+                    System.out.printf("%c", str.charAt(left));
+                else {
+                    System.out.printf("%c", str.charAt(left));
+                    if (right < len) {
+                        printSpace(right - left - 1, ' ');
                         System.out.printf("%c", str.charAt(right));
                     }
                 }
+                //}
             }
             System.out.println();
         }
