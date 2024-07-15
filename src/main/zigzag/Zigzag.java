@@ -20,7 +20,7 @@ public class Zigzag {
 
         for (int i = 0; i < len; i = i + nextFactor) {
             System.out.printf("%c", str.charAt(i));
-            printSpace(nextFactor - 1, ' ');
+            printNChar(nextFactor - 1, ' ');
 
         }
         System.out.println();
@@ -28,36 +28,27 @@ public class Zigzag {
         for (int rowStart = 1; rowStart < k; ++rowStart) {
             for (int left = rowStart; left < len; left += nextFactor) {
 
-                printSpace(rowStart, ' ');
-                if (left >= nextFactor) printSpace(rowStart - 1, ' ');
+                printNChar(rowStart, ' ');
+                if (left >= nextFactor) printNChar(rowStart - 1, ' ');
 
-                //int left = i;
                 int right = left + nextFactor - rowStart * 2;
 
-                //if (right < len) {
                 if (left == right)
                     System.out.printf("%c", str.charAt(left));
                 else {
                     System.out.printf("%c", str.charAt(left));
                     if (right < len) {
-                        printSpace(right - left - 1, ' ');
+                        printNChar(right - left - 1, ' ');
                         System.out.printf("%c", str.charAt(right));
                     }
                 }
-                //}
             }
             System.out.println();
         }
     }
 
-    public static void printSpace(int numOfSpace) {
-        while (numOfSpace-- != 0) {
-            System.out.printf("%c", ' ');
-        }
-    }
-
-    public static void printSpace(int numOfSpace, char c) {
-        while (numOfSpace-- != 0) {
+    public static void printNChar(int n, char c) {
+        while (n-- != 0) {
             System.out.printf("%c", c);
         }
     }
