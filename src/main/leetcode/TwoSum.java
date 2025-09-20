@@ -6,7 +6,8 @@ import java.util.Map;
 public class TwoSum {
 
     public static void main(String[] args) {
-
+        TwoSum twoSum = new TwoSum();
+        System.out.println(twoSum.isSubsequence("abc", "ahbgdc"));
     }
 
     // 1. Two Sum ::: SOLVED
@@ -36,5 +37,23 @@ public class TwoSum {
         }
 
         return new int[]{};
+    }
+
+    // 392. Is Subsequence ::: Solved
+    public boolean isSubsequence(String s, String t) {
+        int lenS = s.length(), len = t.length();
+        if (lenS == 0) {
+            return true;
+        }
+        int i, k = 0;
+        for (i = 0; i < len; ++i) {
+            char c = t.charAt(i);
+            if (c == s.charAt(k)) {
+                k++;
+                if (k >= s.length())
+                    return true;
+            }
+        }
+        return false;
     }
 }
