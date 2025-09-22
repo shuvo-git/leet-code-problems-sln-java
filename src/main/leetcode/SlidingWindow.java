@@ -16,11 +16,13 @@ public class SlidingWindow {
 //        System.out.println(sw.lengthOfLongestSubstring("pwwkew"));
 //        System.out.println(sw.lengthOfLongestSubstring());
 
-        System.out.println(sw.lengthOfLongestSubstringV2("abcabcbb"));
-        System.out.println(sw.lengthOfLongestSubstringV2("bbbbb"));
-        System.out.println(sw.lengthOfLongestSubstringV2("pwwkew"));
-        System.out.println(sw.lengthOfLongestSubstringV2("au"));
-        System.out.println(sw.lengthOfLongestSubstringV2("dvdf"));
+//        System.out.println(sw.lengthOfLongestSubstringV2("abcabcbb"));
+//        System.out.println(sw.lengthOfLongestSubstringV2("bbbbb"));
+//        System.out.println(sw.lengthOfLongestSubstringV2("pwwkew"));
+//        System.out.println(sw.lengthOfLongestSubstringV2("au"));
+//        System.out.println(sw.lengthOfLongestSubstringV2("dvdf"));
+
+        System.out.println(sw.minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3}));
     }
 
     // 3. Longest Substring Without Repeating Characters ::: SOLVED .Sliding window
@@ -55,6 +57,20 @@ public class SlidingWindow {
             index[c - 'a'] = right + 1;
         }
         return mx;
+    }
+
+
+    // 209. Minimum Size Subarray Sum :: Solved
+    public int minSubArrayLen(int target, int[] nums) {
+        int left = 0, right = 0, minSize = Integer.MAX_VALUE, sum = 0;
+        for (; right < nums.length; ++right) {
+            sum += nums[right];
+            while (sum >= target) {
+                minSize = Math.min(minSize, right - left + 1);
+                sum -= nums[left++];
+            }
+        }
+        return minSize == Integer.MAX_VALUE ? 0 : minSize;
     }
 
 
