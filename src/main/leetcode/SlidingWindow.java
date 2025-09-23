@@ -74,4 +74,51 @@ public class SlidingWindow {
     }
 
 
+    // 76. Minimum Window Substring :: 4ms, Beats76.79%
+    public String minWindow(String s, String t) {
+        if (s == null || t == null || s.length() < t.length()) return "";
+        int[] tFreq = new int[128];
+        int need = 0;
+        for (char c : t.toCharArray()) {
+            ++tFreq[c];
+            if (tFreq[c] == 1) ++need;
+        }
+
+        int have = 0;
+
+
+        int left = 0, right = 0;
+        int minLen = Integer.MAX_VALUE;
+        int minLeft = left;
+
+        int[] window = new int[128];
+
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            ++window[c];
+
+            if (tFreq[c] > 0 && tFreq[c] == window[c]) {
+                ++have;
+            }
+
+            while (have == need) {
+                int curLen = right - left + 1;
+                if (curLen < minLen) {
+                    minLen = curLen;
+                    minLeft = left;
+                }
+                char leftChar = s.charAt(left);
+                --window[leftChar];
+                if (tFreq[leftChar] > 0 && window[leftChar] < tFreq[leftChar]) {
+                    --have;
+                }
+                ++left;
+            }
+
+            ++right;
+        }
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(minLeft, minLeft + minLen);
+    }
+
+
 }
