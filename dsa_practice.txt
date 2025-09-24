@@ -1,0 +1,39 @@
+
+// Sabuydee
+1. Tell me about yourself.
+2. Tell me about a project where you faced most chanllenges.
+3. why you use that technology, and why not that?
+4. Assume you have bunch of request, how do handle the requests effectively so that, there is no issue.
+5. how do you handle db query. 
+6. explain difference between join, join left , and join right
+7. explain multi threading and what is the big problem in multi threading, how it can be solved?
+8. what is Deadlock?
+
+// Es ki mi
+1. How do you built a reliable, fault tolerant, high throughput application from scratch?
+	What things will you keep in mind?
+2. How do  you 	do code review in your team?
+3. Lets design an API which will keep track of Campaign view with a table having (Campaign id, date, view count)
+	for a highly transactional environment. How do you resolve concurrency?
+4. Lets code: complete a method to delete leading and trailing zeroes, and then find the val, starting with 'a'	.
+
+
+
+Linear: Array, LinkedList, Stacks, Queue, HashTable
+Non-Linear: Trees, BST, Heaps, Graphs, Trie, Union find
+
+Algo:
+
+
+Problem Solving Technique:
+1. two - pointer
+2. Sliding Window
+3. Prefix sum
+4. FAst-slow pointer
+5. Divide and Conquer
+5. Greedy
+6. Recursion
+7. Backtracking
+8. DP
+9. top K elements
+
