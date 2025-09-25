@@ -38,4 +38,22 @@ public class Array {
         }
         return mxProfit;
     }
+
+    // 122. Best Time to Buy and Sell Stock II :: 1ms
+    public int maxProfit2(int[] prices) {
+        int buyingPrice = Integer.MIN_VALUE;
+        int mxProfit = 0;
+        int sum = 0;
+        for (int sellingPrice : prices) {
+            int profit = sellingPrice - buyingPrice;
+            if (profit > mxProfit) {
+                mxProfit = profit;
+            } else {
+                sum += mxProfit;
+                mxProfit = 0;
+                buyingPrice = sellingPrice;
+            }
+        }
+        return sum + mxProfit;
+    }
 }
